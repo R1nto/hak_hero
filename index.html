@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="HAK HERO — Game edukasi PPKn interaktif tentang hak warga negara Indonesia untuk siswa SD kelas IV–VI. Kenali Hakmu, Hormati Hak Sesama!">
+  <meta name="theme-color" content="#173D78">
+  <title>HAK HERO — Kenali Hakmu, Hormati Hak Sesama!</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M8 10h48v22c0 14-10 22-24 26C18 54 8 46 8 32z' fill='%23173D78'/%3E%3Cpath d='M32 20l4 9 10 1-8 6 3 10-9-6-9 6 3-10-8-6 10-1z' fill='%23FFD84D'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Lewati ke konten utama</a>
+
+  <!-- Bar transisi antar halaman -->
+  <div class="route-bar" id="route-bar" aria-hidden="true"></div>
+
+  <!-- Maskot SVG & Simbol Vektor Lokal -->
+  <svg width="0" height="0" style="position:absolute; display:none;" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Maskot Standar (Heroic Pose) -->
+      <g id="mascot">
+        <!-- Jubah Superhero -->
+        <path d="M50 100 Q10 170 28 226 Q100 206 172 226 Q190 170 150 100 Z" fill="#FF8177" stroke="#173D78" stroke-width="4"/>
+        <!-- Kaki -->
+        <rect x="72" y="168" width="22" height="46" rx="10" fill="#173D78"/>
+        <rect x="106" y="168" width="22" height="46" rx="10" fill="#173D78"/>
+        <ellipse cx="83" cy="218" rx="16" ry="8" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <ellipse cx="117" cy="218" rx="16" ry="8" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <!-- Badan -->
+        <rect x="64" y="98" width="72" height="80" rx="20" fill="#2367B1" stroke="#173D78" stroke-width="4"/>
+        <!-- Emblem Dada (Bintang) -->
+        <circle cx="100" cy="138" r="22" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <path d="M100 122 l5 11 h11 l-9 7 3 11 -10 -7 -10 7 3 -11 -9 -7 h11 z" fill="#173D78"/>
+        <!-- Tangan Kiri & Kanan -->
+        <circle cx="48" cy="138" r="14" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <circle cx="152" cy="138" r="14" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <!-- Kepala -->
+        <circle cx="100" cy="68" r="42" fill="#FFE0BD" stroke="#173D78" stroke-width="4"/>
+        <!-- Topeng Superhero -->
+        <path d="M62 60 Q100 48 138 60 Q142 76 138 82 Q100 92 62 82 Q58 76 62 60 Z" fill="#173D78"/>
+        <!-- Mata -->
+        <ellipse cx="82" cy="68" rx="8" ry="10" fill="#FFF"/>
+        <circle cx="84" cy="68" r="4" fill="#173D78"/>
+        <ellipse cx="118" cy="68" rx="8" ry="10" fill="#FFF"/>
+        <circle cx="116" cy="68" r="4" fill="#173D78"/>
+        <!-- Senyum Superhero -->
+        <path d="M86 92 Q100 104 114 92" fill="none" stroke="#173D78" stroke-width="4" stroke-linecap="round"/>
+        <!-- Sabuk Pahlawan -->
+        <rect x="64" y="162" width="72" height="14" fill="#FFD84D" stroke="#173D78" stroke-width="3"/>
+        <circle cx="100" cy="169" r="8" fill="#FF8177" stroke="#173D78" stroke-width="2"/>
+      </g>
+
+      <!-- Maskot Pose Berpikir (Thinking) -->
+      <g id="mascot-thinking">
+        <use href="#mascot" />
+        <circle cx="145" cy="50" r="8" fill="#FFF" stroke="#173D78" stroke-width="2"/>
+        <circle cx="160" cy="38" r="12" fill="#FFF" stroke="#173D78" stroke-width="2"/>
+        <text x="156" y="43" font-family="sans-serif" font-weight="bold" font-size="14" fill="#173D78">?</text>
+      </g>
+
+      <!-- Maskot Selebrasi / Piala -->
+      <g id="trophy-icon">
+        <path d="M25 15 H75 V45 C75 60 60 70 50 70 C40 70 25 60 25 45 Z" fill="#FFD84D" stroke="#173D78" stroke-width="4"/>
+        <path d="M15 20 C5 20 5 40 25 40" fill="none" stroke="#173D78" stroke-width="4"/>
+        <path d="M85 20 C95 20 95 40 75 40" fill="none" stroke="#173D78" stroke-width="4"/>
+        <rect x="42" y="70" width="16" height="18" fill="#173D78"/>
+        <rect x="25" y="88" width="50" height="12" rx="4" fill="#FF8177" stroke="#173D78" stroke-width="3"/>
+        <path d="M50 25 l3 7 h7 l-6 4 2 7 -6 -4 -6 4 2 -7 -6 -4 h7 z" fill="#FFF"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Header & Navigasi Utama -->
+  <header class="header">
+    <div class="wrap header-inner">
+      <a href="#/beranda" class="logo" aria-label="HAK HERO Beranda">
+        <svg width="42" height="42" viewBox="0 0 200 240" aria-hidden="true"><use href="#mascot"/></svg>
+        <div class="logo-text">
+          <span class="logo-title">HAK HERO</span>
+          <span class="logo-sub">EDUKASI PPKn SD</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navigasi Utama">
+        <a href="#/beranda" class="nav-btn" data-nav="beranda"> Beranda</a>
+        <a href="#/materi" class="nav-btn" data-nav="materi"> Materi</a>
+        <a href="#/level" class="nav-btn nav-btn-primary" data-nav="level"> Peta Misi</a>
+        <a href="#/cara-bermain" class="nav-btn" data-nav="cara-bermain"> Panduan</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Konten Aplikasi Utama -->
+  <main class="wrap" id="app" tabindex="-1" aria-live="polite">
+    <!-- Konten diisi secara dinamis oleh main.js -->
+  </main>
+
+  <!-- Modal Konfirmasi Reset Progres -->
+  <div id="reset-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-icon">⚠️</span>
+        <h2 id="modal-title">Atur Ulang Petualangan?</h2>
+      </div>
+      <p>Semua skor terbaik, status misi, dan lencana yang telah kamu dapatkan akan dihapus. Kamu yakin ingin mengulang dari awal?</p>
+      <div class="modal-actions">
+        <button type="button" id="cancel-reset" class="btn btn-secondary">Batal</button>
+        <button type="button" id="confirm-reset" class="btn btn-danger">Ya, Hapus Progres</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="wrap footer-content">
+      <div class="footer-brand">
+        <span class="footer-logo">⚡ HAK HERO</span>
+        <p>Game Edukasi Hak Warga Negara Indonesia untuk Siswa SD Kelas IV–VI.</p>
+        <p class="tagline">"Kenali Hakmu, Hormati Hak Sesama!"</p>
+      </div>
+      <div class="footer-links">
+        <button type="button" id="reset-btn" class="btn-text-danger"> Atur Ulang Progres Belajar</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; HAK HERO — Media Pembelajaran Interaktif PPKn SD.</p>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
